@@ -10,7 +10,7 @@ const mongoose = require('mongoose'); //import module mongoose
 function connectDB() {
     // Database connection  template 
     //process.env.variable_name : environment variables ,to be secured.
-    mongoose.connect(MONGO_CONNECTION_URL);
+    mongoose.connect(process.env.MONGO_CONNECTION_URL);
     const connection = mongoose.connection;
  
     //just like event listner 
