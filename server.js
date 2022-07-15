@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express'); //add module express
 const app= express(); // express is a function and return an object in app variable.
 const path = require('path');
