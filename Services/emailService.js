@@ -4,9 +4,7 @@ const nodemailer = require('nodemailer');
 //These are secure values so store them in dot env.
 // these details come from SMTP service provider.
 // here we used sendinblue.
-const SMTP_HOST='smtp-relay.sendinblue.com';
-const MAIL_USER= 'rishavgupta88087747@gmail.com';
-const MAIL_PASS= 'rBPbgED9kyFZ510t';
+
 
 
 //sendMail is a function which is exported.
@@ -14,12 +12,12 @@ const MAIL_PASS= 'rBPbgED9kyFZ510t';
 //to send mail we need to call senMail method of nodemailer.
 async function sendMail ({ from, to ,subject, text ,html }) {
     let transporter = nodemailer.createTransport({
-        host: SMTP_HOST,
-        port: 587,
+        host: process.env.SMTP_HOST,
+        port: process.env.SMTP_PORT,
         secure: false,
         auth : {
-            user: MAIL_USER,
-            pass: MAIL_PASS
+            user: process.env.MAIL_USER,
+            pass: process.env.MAIL_PASS
         }
 
     });
