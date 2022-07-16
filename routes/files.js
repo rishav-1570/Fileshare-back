@@ -93,7 +93,7 @@ router.post('/send', async(req,res) => {
     const file = await File.findOne({uuid : uuid});
 
     // if sender already exist.
-    if(file.sendor){
+    if(file.sender){
         return res.status(422).send({ error: 'Email already sent.'});
     }
 
@@ -118,7 +118,7 @@ router.post('/send', async(req,res) => {
         text: `${emailFrom} shared a file with you.`,
         html: require('../Services/emailTemplate')({
             emailFrom: emailFrom,
-            downloadLink: `${process.env.APP_BASE_URL}/files/${file.uuid}`,
+            downloadLink: `${process.env.APP_BASE_URL}/files/${file.uuid}?source=email`,
             size: parseInt(file.size/1000) + ' KB',
             expires: '24 hours'
         })
