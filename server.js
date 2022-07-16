@@ -14,6 +14,15 @@ app.use(express.json());
 const connectDB = require('./config/db');
 connectDB();
 
+
+//cors for browser issue
+const cors = require('cors');
+const corsOptions = {
+    origin: process.env.ALLOWED_CLIENTS.split(',')
+  // ['http://localhost:3000', 'http://localhost:5000', 'http://localhost:3300']
+}
+app.use(cors(corsOptions));
+
 //Template engine
 // It will join the path and create url.
 // it will tell where all the html files are stored.
