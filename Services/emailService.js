@@ -1,3 +1,4 @@
+require('dotenv').config();
 const nodemailer = require('nodemailer');
 //nodemailer for email services. 
 //if we provide html then text will be ignored.
